@@ -73,6 +73,7 @@ void performMergeSort() {
 
 
 int performSelectionSort() {
+  cout << "Welcome to bubble sort" << endl << endl;
   vector<int> A = {10,9,10000,7,6,5,4,3,2,1,0};
   int i = 0,j,min_index;
   while(i<A.size()-1) {
@@ -93,12 +94,54 @@ int performSelectionSort() {
   return 0;
 }
 
+void performInsertSort() {
+  cout << "Welcome to insertion sort" << endl << endl;
+  vector<int> A = {10,9,10000,7,6,5,4,3,2,1,0};
+  int i=1,j,temp;
+  while(i<A.size()) {
+    j= i-1;
+    temp = A[i];
+    while(temp < A[j] && j >=0){
+      A[j+1] = A[j];
+      j--;
+    }
+    A[j+1] = temp;
+    i++;
+  }
+  for(int x : A){
+    cout << x << endl;
+  }
+}
+
+void performBubbleSort() {
+  cout << "Welcome to bubble sort" << endl << endl;
+  vector<int> A = {10,9,10000,7,6,5,4,3,2,1,0};
+  int i;
+  bool done = false; 
+  while(!done) {
+    i=0;
+    done = true;
+    while(i<A.size()-1){
+      if(A[i] > A[i+1]){
+        swap(A[i],A[i+1]);
+        done = false;
+      }
+      i++;
+    }
+  }
+  for(int x : A){
+    cout << x << endl;
+  }
+}
+
 int main() {
   int res;
-  cout << "What do you want to do ?" <<endl;
-  cout << " 1 for Merge Sort "<<endl;
-  cout << " 2 for Selection Sort "<<endl;
-  cout << " 3 to exit  "<<endl;
+  cout << "Select an operation" << endl;
+  cout << " 1 for Merge Sort "<< endl;
+  cout << " 2 for Selection Sort "<< endl;
+  cout << " 3 for Bubble Sort "<< endl;
+  cout << " 4 for Insertion Sort "<< endl;
+  cout << " 0 to exit  "<<endl;
   cin  >>res;
 
   switch (res) {
@@ -106,11 +149,19 @@ int main() {
       performMergeSort();
       break;
     }
-    case 2:{
+    case 2: {
       performSelectionSort();
       break;
     }
-    case 3:{
+    case 3: {
+      performBubbleSort();
+      break;
+    }
+    case 4: {
+      performInsertSort();
+      break;
+    }
+    case 0:{
       break;
     }
     default:{
